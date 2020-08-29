@@ -60,7 +60,21 @@ def stateData(y):
         dataframe2.plot(x='date', label=stateList[x], y=y, ax=ax)
     plt.show()
 
+#   function that displays state level data on a per capita basis
+def stateDataCapita(y):
+    #   set y axis label
+    plt.ylabel(y+' per 100,000')
 
+    #   loop through state list and plot each state on the same graph
+    for x in range(len(stateList)):
+        #   variable we use to
+        ax = plt.gca()
+        #   select only current state
+        dataframe2 = dataframe.loc[dataframe['state'] == stateList[x]]
+        # plot current state
+        dataframe2.plot(x='date', label=stateList[x], y=('per_100000_'+y), ax=ax)
+    plt.show()
+    
 #   function that sums states by governor party and plots
 def stateparty(y):
     #   set y axis label
