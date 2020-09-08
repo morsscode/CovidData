@@ -32,6 +32,10 @@ print(mix.tail())
 #   index data set based on date
 mix['date'] = pd.to_datetime(mix['date'])
 #   create different dataframes for states with republican and democratic governors
+#   add columns for number of new cases and deaths
+mix['new_cases'] = mix['cases'].diff()
+mix['new_deaths'] = mix['deaths'].diff()
+
 mixDemocrat = mix
 mixDemocrat = mixDemocrat[mixDemocrat.Governor == 'D']
 mixRepublican = mix
